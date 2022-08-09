@@ -1,0 +1,7 @@
+name: AEssentialsXAFKDelay
+version: '${version}'
+main: io.github.brawaru.aessentialsxafkdelay.AEssentialsXAFKDelayPlugin
+api-version: 1.18
+depend: [ Essentials ]
+authors: [ Brawaru ]
+description: EssentialsX addon that delays going AFK by configurable time

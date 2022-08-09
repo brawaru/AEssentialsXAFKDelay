@@ -1,0 +1,83 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'java'
+}
+
+import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
+
+group = 'io.github.brawaru'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+    maven {
+        name "essentialsx-releases"
+        url "https://repo.essentialsx.net/releases/"
+    }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
+    compileOnly 'net.essentialsx:EssentialsX:2.19.4'
+    compileOnly 'org.jetbrains:annotations:23.0.0'
+    implementation 'net.kyori:adventure-api:4.11.0'
+    implementation 'net.kyori:adventure-platform-bukkit:4.1.1'
+    implementation 'net.kyori:adventure-text-minimessage:4.11.0'
+}
+
+def targetJavaVersion = 17
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
+        options.release.set(targetJavaVersion)
+    }
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}
+
+
+// Always build shaded JAR instead of a normal JAR
+jar {
+    enabled = false
+}
+
+shadowJar {
+    archiveClassifier.set(null)
+}
+
+tasks.build.dependsOn tasks.shadowJar
+
+// Always re-locate dependencies except for those that excluded
+task relocateShadowJar(type: ConfigureShadowRelocation) {
+    target = tasks.shadowJar
+    prefix = "OrsVaz9Pgn0FWmc8"
+}
+
+tasks.shadowJar.dependsOn tasks.relocateShadowJar

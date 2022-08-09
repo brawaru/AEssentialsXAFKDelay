@@ -1,0 +1,44 @@
+# Time in seconds that player needs to stand still until their AFK status is activated.
+#
+# Recommended value - 10, since it forces player to choose safe location to go in AFK
+# as well as ensures they actually went AFK and not use it to skip sleep or protect
+# themselves for mobs.
+activation-delay: 10
+
+# How often in ticks activation timer fires to check for player movement or damage.
+#
+# Setting this value too low may produce lag if many players activate AFK at the
+# same time, however setting it too high might allow players to violate conditions
+# without plugin noticing.
+#
+# Recommended value: 20.
+timer-tick-rate: 20
+
+# Translations for custom messages.
+#
+# These are strings that have no replacements is Essentials translations.
+#
+# They are grouped per Minecraft locale code with 'en_us' being the default.
+messages:
+  'en_us':
+    # Sent when non-player entity (command block/console) tries to execute /afk command.
+    only-players: "<red>Only players can change their AFK status"
+    # Sent when player doesn't have essentials.afk permission.
+    no-permission: "<red>You do not have permission to use AFK command"
+    # Sent after player executes /afk but doesn't have essentials.afk.immediate permission.
+    afk-requested: "<gold>Please stand still to activate AFK status..."
+    # Sent if player moves or gets damaged while waiting for AFK status to be activated.
+    afk-canceled: "<red>AFK status activation canceled"
+    # Sent when somehow handler gets triggered, but Essentials is not loaded.
+    essentials-not-loaded: "<red>Essentials plugin is not installed"
+    # Sent when executor attempts to change AFK status of nonexistent player.
+    user-not-found: "<red>User not found"
+  'en_gb':
+    afk-canceled: "<red>AFK status activation cancelled"
+  'ru_ru':
+    only-players: "<red>Только игроки могут менять свой AFK статус"
+    no-permission: "<red>У вас нет прав на использование команды AFK"
+    afk-requested: "<gold>Пожалуйста, стойте на месте, чтобы активировать AFK"
+    afk-canceled: "<red>Активация AFK прервана"
+    essentials-not-loaded: "<red>Плагин Essentials не установлен"
+    user-not-found: "<red>Пользователь не найден"

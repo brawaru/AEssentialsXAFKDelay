@@ -38,7 +38,7 @@ messages:
   'ru_ru':
     only-players: "<red>Только игроки могут менять свой AFK статус"
     no-permission: "<red>У вас нет прав на использование команды AFK"
-    afk-requested: "<gold>Пожалуйста, стойте на месте, чтобы активировать AFK"
+    afk-requested: "<gold>Пожалуйста, стойте на месте, чтобы активировать AFK..."
     afk-canceled: "<red>Активация AFK прервана"
     essentials-not-loaded: "<red>Плагин Essentials не установлен"
     user-not-found: "<red>Пользователь не найден"

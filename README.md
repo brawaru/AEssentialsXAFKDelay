@@ -1,5 +1,5 @@
 <!-- MR-SKIP-START -->
-<img src="https://rawcdn.githack.com/Brawaru/AEssentialsXAFKDelay/d538b10dda1e89a7f391013422efaf7692e9fa83/logo.jpg" align="right" width="128" height="128" alt="AEssentialsXAFKDelay logo">
+<img src="./logo.jpg" align="right" width="128" height="128" alt="AEssentialsXAFKDelay logo">
 <!-- MR-SKIP-END -->
 
 # AEssentialsXAFKDelay

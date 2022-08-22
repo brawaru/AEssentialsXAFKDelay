@@ -1,7 +1,7 @@
 <!-- MR-SKIP-START -->
 <img src="./logo.jpg" align="right" width="128" height="128" alt="AEssentialsXAFKDelay logo">
-<!-- MR-SKIP-END -->
 
+<!-- MR-SKIP-END -->
 # AEssentialsXAFKDelay
 
 > Adds a configurable delay before activating the AFK status.
@@ -21,19 +21,10 @@ keyboard_ would do.
 
 ## Usage
 
-Install it alongside the EssentialsX plugin. Once loaded for the first time it
-will create a config folder with `config.yml` file where you can configure the
-delay, check activation and change the messages for various languages.
-
-## Why not contribute this to EssentialsX?
-
-I found that writing this ‘addon’ plugin was easier, and it achieved the desired
-effect immediately. If I made these changes to EssentialsX I would have to wait
-a long time for a review and merge, and in a meanwhile would have to resort to
-self-building.
-
-Nevertheless, I will consider remaking this as a patch to Essentials in the
-future.
+Install alongside the [EssentialsX plugin][essx]. Once loaded for the first
+time, it will create a config folder with `config.yml` file where you can
+configure the delay, check activation interval, and change the messages for
+various languages.
 
 ## Configuration options
 
@@ -48,6 +39,16 @@ All configuration options are documented in the config file.
   **Default**: true.
 
 </details>
+
+## Why not contribute this to EssentialsX?
+
+I found that writing this ‘addon’ plugin was easier, and it achieved the desired
+effect immediately. If I made these changes to EssentialsX I would have to wait
+a long time for a review and merge, and in a meanwhile would have to resort to
+self-building.
+
+Nevertheless, I will consider remaking this as a patch to Essentials in the
+future.
 
 ## Feedback and bug reports
 
@@ -73,6 +74,7 @@ reproducible in newer builds.
 - This project would not exist without the support of [Fundy's][fundy] offline
   chat community.
 
+[essx]: https://modrinth.com/plugin/essentialsx
 [jb_mono]: https://www.jetbrains.com/lp/mono/
 [twemoji]: https://twemoji.twitter.com/
 [fundy]: https://www.twitch.tv/fundy

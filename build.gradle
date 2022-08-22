@@ -2,6 +2,8 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.2'
     id 'kr.entree.spigradle' version '2.4.2'
     id 'java'
+    id "com.modrinth.minotaur" version "2.+"
+    id 'maven-publish'
 }
 
 import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
@@ -38,6 +40,78 @@ spigot {
     description 'Addon for EssentialsX that adds a configurable delay before activating the AFK status.'
     excludeLibraries '*'
 }
+
+def getMrReadme() {
+    def readmeLines = rootProject.file('README.md').getText('UTF-8').readLines()
+    def readmeContent = ''
+    def ignoresContent = false
+    for (def line : readmeLines) {
+        if (line.startsWith( '<!-- MR-SKIP-START -->')) {
+            if (ignoresContent) {
+                throw new GradleException('Illegal formatting: unexpected open of skip block')
+            }
+
+            ignoresContent = true;
+            continue;
+        } else if (line.trim() == '<!-- MR-SKIP-END -->') {
+            if (!ignoresContent) {
+                throw new GradleException('Illegal formatting: unexpected close of skip block')
+            }
+
+            ignoresContent = false;
+            continue;
+        }
+
+        if (!ignoresContent) {
+            readmeContent += line + '\n'
+        }
+    }
+    if (ignoresContent) {
+        throw new GradleException('Illegal formatting: unclosed skip block')
+    }
+
+    return readmeContent
+}
+
+task printModrinthReadme {
+    description = 'Prints README that will be used on Modrinth'
+    doLast {
+        print(getMrReadme())
+    }
+}
+
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = "aessentialsxafkdelay"
+    versionType = "release"
+    uploadFile = shadowJar
+    gameVersions = ["1.19", "1.19.1", "1.19.2"]
+    loaders = ["spigot", "paper", "purpur"]
+    dependencies {
+        required.project "essentialsx"
+    }
+
+    syncBodyFrom = getMrReadme()
+
+    def changeLogFile = rootProject.file('$RELEASE-NOTES.md')
+    if (changeLogFile.exists()) {
+        changelog = changeLogFile.getText('UTF-8')
+    }
+}
+
+tasks.modrinth.dependsOn(tasks.modrinthSyncBody)
+
+publishing {
+    publications {
+        shadow(MavenPublication) { publication ->
+            project.shadow.component(publication)
+        }
+    }
+
+    repositories.clear()
+}
+
+tasks.publish.finalizedBy(tasks.modrinth)
 
 def targetJavaVersion = 17
 java {

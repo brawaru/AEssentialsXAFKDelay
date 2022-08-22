@@ -39,6 +39,16 @@ future.
 
 All configuration options are documented in the config file.
 
+<details>
+<summary>Available permissions</summary>
+
+- `essentials.afk.immediate` \
+  Whether the player can switch to AFK without the waiting.
+
+  **Default**: true.
+
+</details>
+
 ## Feedback and bug reports
 
 All feedback and bug reports are welcome in the [GitHub issues][issues].

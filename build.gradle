@@ -38,6 +38,12 @@ spigot {
     depends 'Essentials'
     description 'Addon for EssentialsX that adds a configurable delay before activating the AFK status.'
     excludeLibraries '*'
+    permissions {
+        'essentials.afk.immediate' {
+            description = 'Whether the player can switch to AFK without the waiting.'
+            defaults = true
+        }
+    }
 }
 
 def getMrReadme() {

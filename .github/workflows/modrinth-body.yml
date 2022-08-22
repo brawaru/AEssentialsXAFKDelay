@@ -1,0 +1,25 @@
+name: Update Modrinth project description
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - README.md
+jobs:
+  sync_description:
+    name: Sync description
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+      - name: Run Gradle 'modrinthSyncBody' task
+        run: ./gradlew modrinthSyncBody
+        with:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}

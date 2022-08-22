@@ -98,8 +98,6 @@ modrinth {
     }
 }
 
-tasks.modrinth.dependsOn(tasks.modrinthSyncBody)
-
 publishing {
     publications {
         shadow(MavenPublication) { publication ->

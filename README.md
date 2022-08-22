@@ -43,6 +43,17 @@ All feedback and bug reports are welcome in the [GitHub issues][issues].
 
 [issues]: https://github.com/Brawaru/AEssentialsXAFKDelay/issues
 
+## Support policy
+
+To cut cost of maintenance only the latest major Minecraft versions are
+supported (targeted and tested). You may be able to download older versions of
+the plugin through releases history, but do not expect any of the changes from
+newer versions to be back-ported.
+
+You are welcome to fork and back-port this plugin to work on older versions;
+however, no bug reports will be accepted from such builds unless they are
+reproducible in newer builds.
+
 ## Credits
 
 - Icon uses [JetBrains Mono][jb_mono] font for text and [Twemoji][twemoji] for

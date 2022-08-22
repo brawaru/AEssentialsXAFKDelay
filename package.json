@@ -1,0 +1,19 @@
+{
+  "name": "@braw/aessentialsxafkdelay",
+  "version": "1.0.0",
+  "author": {
+    "name": "Alexander 'Brawaru' Sorokin",
+    "url": "https://github.com/Brawaru"
+  },
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/Brawaru/AEssentialsXAFKDelay",
+    "type": "git"
+  },
+  "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
+    "gradle-semantic-release-plugin": "^1.7.3",
+    "semantic-release": "^19.0.3"
+  }
+}

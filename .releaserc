@@ -1,0 +1,38 @@
+{
+  "branches": [
+    "main",
+    {
+      name: "dev",
+      prerelease: true
+    }
+  ],
+  plugins: [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "./release-notes-to-file.js",
+      {
+        "path": "$RELEASE-NOTES.md"
+      }
+    ],
+    "gradle-semantic-release-plugin",
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          "build/libs/**"
+        ]
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "gradle.properties",
+          "package.json",
+          "package-lock.json"
+        ]
+      }
+    ]
+  ]
+}

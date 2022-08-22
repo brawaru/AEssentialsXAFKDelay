@@ -9,7 +9,6 @@ plugins {
 import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
 
 group = 'io.github.brawaru'
-version = '1.0.0'
 
 repositories {
     mavenCentral()
